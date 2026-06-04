@@ -1,0 +1,157 @@
+﻿@page "/species"
+
+<MudStack Spacing="3">
+    <MudText Typo="Typo.h4">Species</MudText>
+    <MudText Typo="Typo.body1">Vrste životinja koje se nalaze u azilu.</MudText>
+    <hr />
+</MudStack>
+<MudGrid>
+    <MudItem xs="12" md="3">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6">Psi</MudText>
+            <MudText Typo="Typo.body2">
+                Latinski naziv: Canis lupus familiaris.
+            </MudText>
+            <MudImage Src="pictures/pas.png"
+                      Alt="pas"
+                      Width="150"
+                      Height="150"
+                      Class="mb-2" />
+            <MudText Typo="Typo.body2">
+                Psi su društvene životinje poznate po svojoj odanosti i inteligenciji.
+                <br />
+            </MudText>
+            <MudText Typo="Typo.body1">
+                <br />Prosječni životni vijek: 10-13 godina. <br />
+                Tip prehrane: mesožderi <br />
+                Trenutno u azilu: 31
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Info"
+                           Class="mt-3">
+                    Pogledaj više
+                </MudButton>
+            </MudText>
+        </MudPaper>
+        
+    </MudItem>
+
+    <MudItem xs="12" md="3">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6">Mačke</MudText>
+            <MudText Typo="Typo.body2">
+                Latinski naziv: Felis catus.
+            </MudText>
+            <MudImage Src="pictures/cat.png"
+                      Alt="vrste"
+                      Width="150"
+                      Height="170"
+                      Class="mb-2" />
+            <MudText Typo="Typo.body2">
+                Mačke su neovisne i često tajanstvene životinje koje su popularni kućni ljubimci.  
+                <br />
+            </MudText>
+            <MudText Typo="Typo.body1">
+                <br />Prosječni životni vijek: 13-17 godina.<br />
+                Tip prehrane: mesožderi.<br />
+                Trenutno u azilu: 23
+            </MudText>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Info"
+                       Class="mt-3">
+                Pogledaj više
+            </MudButton>
+        </MudPaper>
+        
+    
+    </MudItem>
+
+    <MudItem xs="12" md="3">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6">Kunići</MudText>
+            <MudText Typo="Typo.body2">
+                Latinski naziv: Oryctolagus cuniculus domesticus
+            </MudText>
+            <MudImage Src="pictures/zec.png"
+                      Alt="smjestaj"
+                      Width="150"
+                      Height="150"
+                      Class="mb-2" />
+            <MudText Typo="Typo.body2">
+                Kunići su mali, društveni biljojedi poznati po svojim dugim ušima i mekom krznu.
+                <br />
+            </MudText>
+            <MudText Typo="Typo.body1">
+                <br />Prosječni životni vijek: 9-12 godina.<br />
+                Tip prehrane: biljojedi.<br />
+                Trenutno u azilu: 7
+            </MudText>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Info"
+                       Class="mt-3">
+                Pogledaj više
+            </MudButton>
+        </MudPaper>
+ 
+        
+    </MudItem>
+    <MudItem xs="12" md="3">
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudText Typo="Typo.h6">Papige</MudText>
+            <MudText Typo="Typo.body2">Latinski naziv: Psittaciformes</MudText>
+            <MudImage Src="pictures/papiga.png"
+                      Alt="smjestaj"
+                      Width="150"
+                      Height="165"
+                      Class="mb-2" />
+            <MudText Typo="Typo.body2">
+                Papige su šarene i inteligentne ptice koje mogu oponašati ljudski govor.
+                <br />
+            </MudText>
+            <MudText Typo="Typo.body1">
+                <br />Prosječni životni vijek: 15-20 godina.<br />
+                Tip prehrane: biljojedi <br />
+                Trenutno u azilu: 15
+            </MudText>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Info"
+                       Class="mt-3">
+                Pogledaj više
+            </MudButton>
+        </MudPaper>
+        
+    </MudItem>
+</MudGrid>
+<hr/>
+<MudText Typo="Typo.h5" GutterBottom="true">Kapacitet azila</MudText>
+<MudText Typo="Typo.body2" GutterBottom="true">Trenutna popunjenost azila po vrstama</MudText>
+<MudTable Items="_species">
+    <HeaderContent>
+        <MudTh>Redni broj</MudTh>
+        <MudTh>Vrsta</MudTh>
+        <MudTh>Popunjenost</MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+        <MudTd>@context.Id</MudTd>
+        <MudTd>@context.Name</MudTd>
+        <MudTd>@context.Description</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private List<SpeciesItem> _species = new()
+  {
+      new SpeciesItem { Id = 1, Name = "Domaći pas", Description = "31/50" },
+      new SpeciesItem { Id = 2, Name = "Domaća mačka", Description = "23/25" },
+      new SpeciesItem { Id = 3, Name = "Kunić", Description = "7/10" },
+      new SpeciesItem { Id = 3, Name = "Papiga", Description = "15/40" }
+  };
+
+    private class SpeciesItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+}
+<hr />
